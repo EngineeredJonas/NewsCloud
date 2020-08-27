@@ -8,15 +8,16 @@ from bs4 import BeautifulSoup
 from wordcloud import WordCloud
 
 BBC_FEED = "http://feeds.bbci.co.uk/news/world/rss.xml"
-Limit = 8
+Limit = 4
 
 app = Flask(__name__)
 
 
 class Article:
-    def __init__(self, url, image):
+    def __init__(self, url, image, title):
         self.url = url
         self.image = image
+        self.title = title
 
 
 def makewordcloud(text):
@@ -45,7 +46,7 @@ def home():
     for article in feed['entries'][:Limit]:
         text = parse_article(article['link'])
         cloud = makewordcloud(text)
-        articles.append(Article(article['link'], cloud))
+        articles.append(Article(article['link'], cloud, article['title']))
 
     return render_template('home.html', articles=articles)
 
