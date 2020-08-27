@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>NewsClouds | Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <style type="text/css">
+      body {padding: 20px;}
+      img{padding: 5px;}
+    </style>
+  </head>
+
+  <body>
+    <body style= "background-color:powderblue;">
+    <h1>NewsClouds</h1>
+      <p>Zu beschäftigt um die Nachrichten zu verfolgen? Hier sind die letzen BBC World News als Wordclouds!</p>
+      {% for article in articles %}
+        <a href="{{article.url}}"><img src="data:image/png;base64,{{article.image}}"></a>
+      {% endfor %}
+  </body>
+</html>
